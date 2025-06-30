@@ -1,0 +1,461 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --text-color: #333;
+  --header-color: #2c3e50;
+  --background-color: #f0f2f5;
+  --card-background: white;
+  --border-color: #ddd;
+  --focus-shadow: rgba(52, 152, 219, 0.3);
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Body and Typography Styles */
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: var(--header-color);
+  margin-bottom: 2rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  text-align: center;
+  font-weight: 700;
+}
+
+main {
+  width: 100%;
+  max-width: 700px; /* Increased max-width for better layout */
+  padding: 0;
+}
+
+form {
+  background: var(--card-background);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+fieldset {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: #fafafa;
+}
+
+legend {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 0 0.5rem;
+  margin-left: -0.5rem; /* Adjust to align with fieldset border */
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Increased gap for better spacing */
+  align-items: flex-end;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 200px; /* Adjusted min-width for inputs */
+}
+
+.form-row .action-btn {
+  flex: 0 0 auto;
+  align-self: flex-end;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  color: var(--header-color);
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: clamp(0.6rem, 2vw, 0.9rem);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+button {
+  width: 100%;
+  padding: clamp(0.7rem, 2.5vw, 1rem);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 1.5rem; /* Space before submit button */
+}
+
+button:hover {
+  background: #2980b9;
+  box-shadow: var(--shadow-light);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.action-btn {
+  max-width: 50px;
+  padding: clamp(0.6rem, 2vw, 0.9rem);
+  background: var(--secondary-color);
+  margin-top: 0; /* Override margin for row buttons */
+}
+
+.action-btn:hover {
+  background: #27ae60;
+}
+
+.action-btn.remove {
+  background: var(--danger-color);
+}
+
+.action-btn.remove:hover {
+  background: #c0392b;
+}
+
+.wifiButton {
+  width: 100%;
+  padding: clamp(0.7rem, 2.5vw, 1rem);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-weight: 900;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 1.5rem; /* Space before submit button */
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top, above other content */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  display: flex; /* Use flex for centering */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Modal Content */
+.modal-content {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-row-gap: 10px;
+  background-color: var(--card-background);
+  margin: auto;
+  padding: 25px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px; /* Max width for modal */
+  box-shadow: var(--shadow-medium);
+  position: relative; /* For close button positioning */
+  animation: fadeIn 0.3s ease-out; /* Simple animation */
+}
+
+/* Modal close button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--header-color);
+  text-decoration: none;
+}
+
+/* Animation for modal */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.network-indicator-container {
+  position: relative;
+  width: 15px; /* Set to 15px */
+  height: 15px; /* Set to 15px */
+  border-radius: 50%; /* Make it a circle */
+  background-color: #4caf50; /* Solid green color */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Smaller shadow for smaller circle */
+  z-index: 2; /* Ensure the main circle is above the waves */
+}
+
+/* Pseudo-elements for the wave effect */
+.network-indicator-container::before,
+.network-indicator-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the waves */
+  width: 100%; /* Waves start at the size of the container */
+  height: 100%; /* Waves start at the size of the container */
+  border-radius: 50%;
+  background: rgba(
+    76,
+    175,
+    80,
+    0.4
+  ); /* Increased transparency for better visibility at small scale */
+  animation: outer-wave 2.5s infinite cubic-bezier(0.23, 1, 0.32, 1); /* A gentle "easeOutCirc" like curve, slightly faster */
+  z-index: 1; /* Waves are below the main circle */
+}
+
+.network-indicator-container::before {
+  animation-delay: 0s;
+}
+
+.network-indicator-container::after {
+  animation-delay: 1.25s; /* Stagger the waves by half the duration */
+}
+
+.false-network-indicator-container {
+  position: relative;
+  width: 15px; /* Set to 15px */
+  height: 15px; /* Set to 15px */
+  border-radius: 50%; /* Make it a circle */
+  background-color: #ff0000; /* Solid green color */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Smaller shadow for smaller circle */
+  z-index: 2; /* Ensure the main circle is above the waves */
+}
+
+/* Pseudo-elements for the wave effect */
+.false-network-indicator-container::before,
+.false-network-indicator-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the waves */
+  width: 100%; /* Waves start at the size of the container */
+  height: 100%; /* Waves start at the size of the container */
+  border-radius: 50%;
+  background: rgba(
+    241,
+    25,
+    25,
+    0.4
+  ); /* Increased transparency for better visibility at small scale */
+  animation: outer-wave 2.5s infinite cubic-bezier(0.23, 1, 0.32, 1); /* A gentle "easeOutCirc" like curve, slightly faster */
+  z-index: 1; /* Waves are below the main circle */
+}
+
+.false-network-indicator-container::before {
+  animation-delay: 0s;
+}
+
+.false-network-indicator-container::after {
+  animation-delay: 1.25s; /* Stagger the waves by half the duration */
+}
+
+@keyframes outer-wave {
+  0% {
+    transform: translate(-50%, -50%) scale(1); /* Start at 100% size, centered */
+    opacity: 0.7; /* Start quite visible */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3); /* Expand more to be visible at smaller base size */
+    opacity: 0; /* Fade out completely */
+  }
+}
+
+.isConnectedContainer,
+.modalButtonsContainer {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-column-gap: 10px;
+}
+
+.networks-container {
+  display: none;
+  background-color: var(--card-background);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default; /* Changed to default as only inner button is clickable*/
+  border: 1px solid var(--border-color);
+  margin-top: 10px;
+}
+
+.connectionButton,
+.rtc-status-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--card-background);
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-light);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default; /* Changed to default as only inner 
+ is clickable*/
+  border: 1px solid var(--border-color);
+}
+
+.connectionButton .ssid {
+  font-weight: 600;
+  color: var(--header-color);
+  flex-grow: 1; /* Allows SSID to take available space */
+  margin-right: 1rem;
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+}
+
+.networkModalName {
+  margin-bottom: 5px;
+}
+
+.connectionButton .rssi {
+  font-size: 0.9em;
+  color: #666;
+  min-width: 40px; /* Ensure RSSI has space */
+  text-align: right;
+  font-weight: 500;
+}
+
+.connectionButton .connect-btn {
+  /* Styles for the CONNECT button inside each network card */
+  width: auto;
+  padding: 0.6rem 1rem; /* Smaller padding for a compact button */
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-left: 1rem; /* Space between SSID and button */
+  flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+.connectionButton .connect-btn:hover {
+  background: #2980b9;
+  box-shadow: var(--shadow-light);
+}
+
+.add-service-btn {
+  width: 100%;
+  background-color: var(--secondary-color);
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.connectionButton .connect-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--focus-shadow);
+}
+
+.modalButtonContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+  }
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+
+  fieldset {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .form-row .form-group {
+    min-width: 100%;
+  }
+
+  .form-row .action-btn {
+    align-self: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 0.5rem;
+  }
+
+  button {
+    padding: clamp(0.6rem, 2vw, 0.9rem);
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  form {
+    max-width: 650px;
+  }
+}

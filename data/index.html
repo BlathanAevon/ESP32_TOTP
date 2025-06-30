@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Device Configuration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300,400,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="index.js"></script>
+</head>
+
+<body>
+  <main>
+    <fieldset>
+      <legend>WiFi Connection</legend>
+      <div class="isConnectedContainer" id="isConnectedContainer">
+        <div id="rtc-status-container" class="rtc-status-container">
+          <span>RTC Not Synced</span>
+          <div class="false-network-indicator-container rounded full">
+          </div>
+        </div>
+      </div>
+      <div class="networks-container" id="networks-container"></div>
+      <button type="button" id="scanButton" onClick="scanForNetworks()">
+        Scan for networks
+      </button>
+    </fieldset>
+
+    <!-- MODAL -->
+    <div id="connectionModal" class="modal" style="display: none;">
+      <div class="modal-content" id="modal-content">
+        <input required class="networkModalName" id="networkModalName" type="text" placeholder="Network">
+        <input required class="networkModalPassword" id="networkModalPassword" type="password" placeholder="Password">
+        <div class="modalButtonsContainer">
+          <button type="button" onclick="closeModal()">Close</button>
+          <button type="button" id="wifiConnectButton"
+            onclick="connectToNetwork(document.getElementById('networkModalName').value, document.getElementById('networkModalPassword').value)">Connect</button>
+        </div>
+        <span id="connectionStatusMsg"></span>
+      </div>
+    </div>
+    <!-- MODAL -->
+
+    <fieldset>
+      <legend>Services Credentials</legend>
+      <div id="service-container">
+      </div>
+      <button type="button" class="add-service-btn" onclick="addService()">
+        + Add Service
+      </button>
+      <button type="button" onclick="saveServices()">Save Services</button>
+    </fieldset>
+  </main>
+</body>
+
+</html>
