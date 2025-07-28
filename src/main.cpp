@@ -78,6 +78,7 @@ setup ()
           if (getTriesLeft () == 0)
             {
               wipeServices ("/services.json");
+              unsetPincode ();
               Serial.println (
                   "PASSWORD ENTERED WRONG 3 TIMES. SERVICES WIPED!");
               break;

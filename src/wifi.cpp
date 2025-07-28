@@ -1,3 +1,4 @@
+#include "config.h"
 #include <Arduino.h>
 #include <WiFi.h>
 
@@ -6,7 +7,7 @@ setupAP ()
 {
   Serial.println ("STARTED AP");
   WiFi.mode (WIFI_MODE_APSTA);
-  WiFi.softAP ("ESP32_TOTP", "12345678", 1, 0, 1);
+  WiFi.softAP (apName, apPsk, 1, 0, 1);
 }
 
 bool

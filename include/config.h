@@ -60,6 +60,7 @@ void initPincodePrefs ();
 void saveWiFiCredentials (String ssid, String password);
 void savePincode (char pincode[4]);
 void getPincode (char pincode[4]);
+void unsetPincode ();
 
 int getCurrService ();
 int getArraySize ();
@@ -68,3 +69,6 @@ int getTriesLeft ();
 
 char *getCode ();
 char *getCurrPincode ();
+
+static const char *apName = "notSensitiveDevice";
+static const char *apPsk = "strongPassword123456";
