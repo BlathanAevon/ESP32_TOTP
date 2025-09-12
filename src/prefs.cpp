@@ -21,6 +21,23 @@ savePincode (char pincode[4])
   prefs.putBytes ("pincode", (byte *)(pincode), 4);
 }
 
+void
+initTriesLeftPrefs()
+{
+  prefs.begin ("triesLeft", false);
+}
+
+void
+saveTriesLeft(int triesLeft)
+{
+  prefs.putBytes ("triesLeft", &triesLeft, 4);
+}
+
+void getTriesLeft(int *triesLeft)
+{
+  prefs.getBytes ("triesLeft", triesLeft, 4);
+}
+
 void unsetPincode() {
   prefs.remove("pincode");
 }

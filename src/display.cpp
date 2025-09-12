@@ -1,6 +1,8 @@
 #include "config.h"
+#include "sprites.h"
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Battery18650Stats.h>
 #include <U8g2_for_Adafruit_GFX.h>
 
 #define SCREEN_WIDTH 128
@@ -9,6 +11,7 @@
 /*DISPLAY AND FONT SETUP*/
 Adafruit_SSD1306 display (SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 U8G2_FOR_ADAFRUIT_GFX u8g2_for_adafruit_gfx;
+Battery18650Stats battery (ADC_PIN);
 
 void
 setupFont ()
@@ -22,13 +25,27 @@ setupFont ()
 void
 displayBatteryState ()
 {
-  int start = 39;
-  int size = 5;
-  int space = 5;
-  for (int i = 0; i <= 4; i++)
+  if (battery.getBatteryVolts () > 4.3)
     {
-      display.fillRect (start, 59, size, size, WHITE);
-      start += size + space;
+
+      display.drawBitmap (60, 54, image_Charging_lightning_mask_bits, 9, 10,
+                          1);
+    }
+  else if (battery.getBatteryVolts () < 1)
+    {
+      display.drawBitmap (60, 56, image_connected_to_computer, 8, 8, 1);
+    }
+  else
+    {
+      int chargeLevel = battery.getBatteryChargeLevel () / 20;
+      int start = 39;
+      int size = 5;
+      int space = 5;
+      for (int i = 0; i <= chargeLevel - 1; i++)
+        {
+          display.fillRect (start, 59, size, size, WHITE);
+          start += size + space;
+        }
     }
 }
 
@@ -93,12 +110,32 @@ displayServicesErr ()
 }
 
 void
+displayResetScreen ()
+{
+  display.clearDisplay ();
+  display.drawBitmap (14, 8, image_file_delete, 39, 48, 1);
+  display.drawBitmap (74, 8, image_device_lock, 39, 48, 1);
+  display.display ();
+}
+
+void
+displaySetupModeScreen ()
+{
+  display.clearDisplay ();
+  display.drawBitmap (5, 8, image_wifi, 57, 48, 1);
+  display.drawBitmap (81, 8, image_hour_glass, 33, 48, 1);
+  display.display ();
+}
+
+void
 displayLockScreen ()
 {
+  int triesLeft;
+  getTriesLeft(&triesLeft);
   readLockScreenInputs ();
   display.clearDisplay ();
   displayPincodeMarkers ();
-  displayPincodeTries (getTriesLeft ());
+  displayPincodeTries (triesLeft);
   displayBatteryState ();
   display.display ();
 }

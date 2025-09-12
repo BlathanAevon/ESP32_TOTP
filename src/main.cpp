@@ -10,6 +10,7 @@ void
 setup ()
 {
   delay (1000);
+  Wire.begin ();
   Serial.begin (115200);
 
   if (beginRTC ())
@@ -26,11 +27,20 @@ setup ()
         ;
     }
 
+  if (allocateDisplay ())
+    {
+      Serial.println (F ("SSD1306 allocation failed"));
+      for (;;)
+        ;
+    }
+
+  setupFont ();
   setupInputs ();
 
-  if (digitalRead (BUTTON_UP_PIN) == LOW)
+  if (digitalRead (BUTTON_UP_PIN) == HIGH)
     {
       Serial.println ("CONFIG SETUP MODE");
+
       isSetup = true;
 
       initWifiPrefs ();
@@ -58,15 +68,8 @@ setup ()
       Serial.println ("MAIN MODE");
       Wire.begin ();
 
-      if (allocateDisplay ())
-        {
-          Serial.println (F ("SSD1306 allocation failed"));
-          for (;;)
-            ;
-        }
-
-      setupFont ();
       initPincodePrefs ();
+      initTriesLeftPrefs ();
 
       while (!isPincodeSet ())
         {
@@ -75,13 +78,16 @@ setup ()
 
       while (isAccessDenied ())
         {
-          if (getTriesLeft () == 0)
+          int triesLeft;
+          getTriesLeft (&triesLeft);
+          if (triesLeft == 0)
             {
               wipeServices ("/services.json");
               unsetPincode ();
-              Serial.println (
-                  "PASSWORD ENTERED WRONG 3 TIMES. SERVICES WIPED!");
-              break;
+              while (1)
+                {
+                  displayResetScreen ();
+                }
             }
           displayLockScreen ();
         }
@@ -96,8 +102,6 @@ setup ()
     }
 
   updateCode (getServices ()[getCurrService ()].secret);
-
-  Serial.println ("main setup() complete");
 }
 
 void
@@ -106,6 +110,7 @@ loop ()
   if (isSetup)
     {
       processRequests ();
+      displaySetupModeScreen ();
     }
   else
     {
