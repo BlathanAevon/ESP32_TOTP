@@ -100,6 +100,17 @@ You can find more images in `IMAGES` folder
 
     7. Upload the code
 
+5. **Activation**
+
+    1. Turn on the device, it will ask you for the pin-code, enter the pin-code using buttons UP/DOWN/OK/BACK
+    2. Enter you pin-code, make sure it works as intended
+    3. Turn off the device
+    4. Turn on the device while holding `UP` button
+    5. Device is in the `SETUP` mode now, open wifi setting on your Phone/Laptop
+    6. Connect to the `AP` using credentials specified in `include/config.h`
+    7. Captive portal should be opened, scan the networks, connect to wifi to sync the RTC
+    8. Enter your service name and TOTP secret, press save
+    9. Turn off and turn on device again, enter pin-code, you now should see the TOTP code
 
 ## 📚 Libraries Used
 
