@@ -76,9 +76,9 @@ You can find more images in `IMAGES` folder
 
     Here is the assembled PCB in it's case:
 
-    <img src="IMAGES/STEP1.JPG" alt="drawing" width="400"/>
-    <img src="IMAGES/STEP2.JPG" alt="drawing" width="400"/>
-    <img src="IMAGES/STEP3.JPG" alt="drawing" width="400"/>
+    <img src="./IMAGES/STEP1.JPG" alt="drawing" width="400"/>
+    <img src="./IMAGES/STEP2.JPG" alt="drawing" width="400"/>
+    <img src="./IMAGES/STEP3.JPG" alt="drawing" width="400"/>
 
 4. **Flash Firmware**
    - Use PlatformIO extension in VSCode 
