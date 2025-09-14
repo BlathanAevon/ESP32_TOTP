@@ -4,9 +4,9 @@ A compact and secure TOTP (Time-Based One-Time Password) generator built on the 
 
 ## 📸 Preview
 
-<img src="/IMAGES/1.JPG" alt="drawing" width="400"/>
-<img src="/IMAGES/2.JPG" alt="drawing" width="400"/>
-<img src="/IMAGES/3.JPG" alt="drawing" width="400"/>
+<img src="./IMAGES/1.png" alt="drawing" width="400"/>
+<img src="./IMAGES/2.png" alt="drawing" width="400"/>
+<img src="./IMAGES/3.png" alt="drawing" width="400"/>
 
 You can find more images in `IMAGES` folder
 
@@ -46,13 +46,13 @@ You can find more images in `IMAGES` folder
 >[!NOTE]
 > The battery size should be no more than `42mm`
 
-<img src="/IMAGES/BATTERIES.JPG" alt="drawing" width="400"/>
+<img src="./IMAGES/BATTERIES.JPG" alt="drawing" width="400"/>
 
 ## 🔧 Getting Started
 
 1. **Order the PCB**
 
-    <img src="/IMAGES/PCB.JPG" alt="drawing" width="400"/>
+    <img src="./IMAGES/PCB.JPG" alt="drawing" width="400"/>
 
     [EASYEDA/JLCPCB](https://oshwlab.com/bundemshake/esp32_totp)
 
