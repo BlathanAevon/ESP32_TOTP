@@ -107,8 +107,14 @@ You can find more images in `IMAGES` folder
     3. Turn off the device
     4. Turn on the device while holding `UP` button
     5. Device is in the `SETUP` mode now, open wifi setting on your Phone/Laptop
+
+    <img src="./IMAGES/SETUP.JPG" alt="setup mode" width="400"/>
+
     6. Connect to the `AP` using credentials specified in `include/config.h`
     7. Captive portal should be opened, scan the networks, connect to wifi to sync the RTC
+
+    <img src="./IMAGES/CAPTIVE.PNG" alt="captive portal" width="400"/>
+
     8. Enter your service name and TOTP secret, press save
     9. Turn off and turn on device again, enter pin-code, you now should see the TOTP code
 
