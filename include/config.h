@@ -9,6 +9,11 @@
 #define BUTTON_CANCEL_PIN 3
 #define ADC_PIN 4
 
+// Configure AP settings HERE
+
+static const char *apName = "notSensitiveDevice"; // AP Name
+static const char *apPsk = "strongPassword123456"; // AP Password
+
 struct Service
 {
   char name[64];
@@ -74,6 +79,3 @@ int getCurrPincodeElem ();
 
 char *getCode ();
 char *getCurrPincode ();
-
-static const char *apName = "notSensitiveDevice";
-static const char *apPsk = "strongPassword123456";
