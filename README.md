@@ -1,4 +1,4 @@
-# ESP32_TOTP 🔐
+# ESP33_TOTP 🔐
 
 A compact and secure TOTP (Time-Based One-Time Password) generator built on the ESP32 platform. Designed for two-factor authentication (2FA) systems like Google Authenticator, this project displays time-based codes on a small OLED screen and syncs with an RTC module for accurate timekeeping.
 
@@ -64,7 +64,7 @@ You can find more images in `IMAGES` folder
     - 2 Layers
     - 1.6mm PCB Thickness
 
-2. **Print the case, you can find 3D models in `CAD` folder, use such settings:** 
+2. **Print the case, you can find 3D models on [Printables](https://www.printables.com/model/1414199-esp32-totp-a-phone-like-personal-security-device) or in a `CAD` folder, use such settings:** 
     - Filament: Any, i've used PLA
     - Layer height: 0.08mm
     - Supports: None
@@ -133,4 +133,3 @@ You can find more images in `IMAGES` folder
 ---
 
 > **Note**: This project is not intended to replace your mobile 2FA app but is a great educational and offline alternative for understanding TOTP generation.
-
