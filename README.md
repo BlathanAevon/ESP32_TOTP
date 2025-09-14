@@ -114,6 +114,11 @@ You can find more images in `IMAGES` folder
 - lucadentella/TOTP library@^1.1.0
 - danilopinotti/Battery_18650_Stats@^1.0.0
 
+
+## Working device
+
+<img src="./IMAGES/ASSEMBLED.JPG" alt="drawing" width="400"/>
+
 ---
 
 > **Note**: This project is not intended to replace your mobile 2FA app but is a great educational and offline alternative for understanding TOTP generation.
