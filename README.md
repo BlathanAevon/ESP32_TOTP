@@ -1,4 +1,4 @@
-# ESP33_TOTP 🔐
+# ESP32_TOTP 🔐
 
 A compact and secure TOTP (Time-Based One-Time Password) generator built on the ESP32 platform. Designed for two-factor authentication (2FA) systems like Google Authenticator, this project displays time-based codes on a small OLED screen and syncs with an RTC module for accurate timekeeping.
 
